@@ -1,21 +1,723 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Pagina da Mel ˚ʚ♡ɞ˚ </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>site da mel ^o^ </title>
+
+  <style>
+    :root {
+      --dark: #ffa9ef;
+      --light: #fff2fb;
+      --pink: #ffc7e7;
+      --soft: #ffe0f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--dark);
+      font-family: Arial, sans-serif;
+      line-height: 1;
+      background: url("stars.gif") center center fixed;
+      background-size: cover;
+      background-repeat: repeat;
+    }
+
+    a,
+    button {
+      font: inherit;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--pink);
+      outline-offset: 3px;
+    }
+
+    .browser {
+      padding: 5px 14px;
+      background: var(--light);
+      border-bottom: 1px solid var(--pink);
+      font-size: 12px;
+    }
+
+    .page {
+      width: min(1200px, calc(100% - 24px));
+      margin: 18px auto;
+      overflow: hidden;
+      background: var(--light);
+      border: 3px solid var(--dark);
+      border-radius: 4px;
+      box-shadow:  14px 8px 0 #ffccfb;
+    }
+
+    .fundoTexto {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 8px 15px;
+      border-radius: 15px;
+      display: inline-block;
+      border: 2px solid #ffd6ef;
+    }
+
+    header {
+      min-height: 170px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      background: var(--pink);
+      border-bottom: 3px solid var(--dark);
+    }
+
+    header img {
+      width: min(100%, 360px);
+      max-height: 120px;
+      object-fit: contain;
+    }
+
+    header h2 {
+      margin: 0;
+      color: var(--light);
+      font-size: clamp(52px, 12vw, 120px);
+      text-shadow: 4px 4px var(--dark);
+      letter-spacing: 4px;
+    }
+
+    header p {
+      position: absolute;
+      bottom: 19px;
+      margin: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 210px 1fr 220px;
+      gap: 10px;
+      padding: 10px;
+      background: var(--soft);
+    }
+
+    .column,
+    .content {
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .box {
+      overflow: hidden;
+      background: var(--light);
+      border: 2px solid var(--pink);
+      border-radius: 12px;
+      box-shadow:  14px 8px 0 #ffc4f1;
+    }
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      padding: 7px 9px;
+      background: var(--soft);
+      border-bottom: 2px solid var(--pink);
+      font-weight: bold;
+    }
+
+    .body {
+      padding: 12px;
+    }
+
+    .menu {
+      display: grid;
+      gap: 3px;
+      padding: 8px;
+    }
+
+    .menu button {
+      padding: 7px;
+      color: var(--dark);
+      background: none;
+      border: 0;
+      border-bottom: 1px solid var(--soft);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .menu button::before {
+      content: "›";
+      margin-right: 20px;
+      color: var(--pink);
+    }
+
+    .menu button:hover,
+    .menu button.active {
+      background: var(--soft);
+      font-weight: bold;
+    }
+
+    .section-name {
+      padding: 6px 8px 2px;
+      color: var(--dark);
+      font-weight: bold;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns:0.8fr 500px;
+      gap: 67px;
+      align-items: center;
+      min-height: 280px;
+      padding: 30px;
+    }
+
+    .hero h2,
+    .page-title h2 {
+      margin: 0 0 18px;
+      color: var(--dark);
+      font-size: clamp(28px, 5vw, 50px);
+    }
+
+    .hero p,
+    .page-title p {
+      max-width: 50ch;
+    }
+
+    .hero img {
+      width: 50%;
+      max-height: 150px;
+      object-fit: contain;
+    }
+
+    .page-title {
+      padding: 20px 22px 4px;
+    }
+
+    .page-title p {
+      height: 10px;
+      margin: 4px;
+      background: var(--soft);
+      border-radius: 8px;
+    }
+
+    .home-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .note {
+      min-height: 20px;
+      padding: 10px;
+      background: #ffffff;
+      border: 4px solid var(--pink);
+      border-radius: 19px;
+    }
+
+    .note strong {
+      font-size: 18px;
+    }
+
+    .placeholder {
+      height: 10px;
+      margin-top: 12px;
+      background: var(--soft);
+      border-radius: 8px;
+    }
+
+    .placeholder.short {
+      width: 65%;
+    }
+
+    .placeholder.tiny {
+      width: 40%;
+    }
+
+    .shapes {
+      display: flex;
+      align-items: end;
+      gap: 14px;
+      min-height: 125px;
+      padding: 16px;
+      border: 2px solid var(--pink);
+      border-radius: 12px;
+    }
+
+    .shape {
+      width: 66px;
+      height: 66px;
+      background: var(--pink);
+      border-radius: 45% 55% 50% 50%;
+    }
+
+    .shape:nth-child(2) {
+      width: 44px;
+      height: 44px;
+      background: var(--pink);
+    }
+
+    .shape:nth-child(3) {
+      width: 82px;
+      height: 58px;
+      background: var(--pink);
+    }
+
+    .updates {
+      display: grid;
+      gap: 10px;
+    }
+
+    .update {
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--soft);
+    }
+
+    .update::before {
+      display: inline-grid;
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      place-items: center;
+      background: var(--soft);
+      border-radius: 40%;
+    }
+
+    .links {
+      display: grid;
+      gap: 8px;
+    }
+
+    .links a {
+      padding: 7px;
+      color: var(--dark);
+      background: var(--soft);
+      border: 1px solid var(--pink);
+      border-radius: 6px;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .stamps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .stamp {
+      display: grid;
+      min-height: 52px;
+      place-items: center;
+      background: #ffffff;
+      border: 1px solid var(--pink);
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .stamp:nth-child(2) {
+      background: var(--pink);
+    }
+
+    .page-content {
+      display: none;
+    }
+
+    .page-content.active {
+      display: block;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 20px;
+      padding: 20px 22px 28px;
+    }
+
+    .about img {
+      width: 100%;
+      border: 3px solid var(--pink);
+      border-radius: 50%;
+      background: var(--pink);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 20px 22px 28px;
+    }
+
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      background: var(--soft);
+      border: 2px solid var(--pink);
+    }
+
+    .diary {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 18px;
+      padding: 20px 22px 28px;
+    }
+
+    .calendar {
+      min-height: 190px;
+      padding: 14px;
+      background: var(--pink);
+      border: 2px solid var(--pink);
+      border-radius: 10px;
+    }
+
+    .calendar img {
+      width: 100%;
+      margin-top: 12px;
+    }
+
+    .journal {
+      min-height: 210px;
+      padding: 16px;
+      background: var(--light);
+      border: 2px solid var(--pink);
+      background-image:
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0 31px,
+          var(--soft) 32px 33px
+        );
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 11px 16px;
+      background: var(--light);
+      border-top: 2px solid var(--soft);
+      font-size: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 190px 1fr;
+      }
+
+      .right {
+        grid-column: 1 / -1;
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .layout,
+      .hero,
+      .home-bottom,
+      .about,
+      .diary {
+        grid-template-columns: 1fr;
+      }
+
+      .right {
+        grid-template-columns: 2fr 1fr;
+      }
+
+      .right .updates-box {
+        grid-column: 1 / -1;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero img {
+        max-height: 130px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .right,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        display: grid;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      height: 12px;
+      width: 17px;
+      background: #ffd0f8;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-image: url("stars.gif");
+      border: 4dvh solid #ffffff;
+      border-radius: 5ex;
+      box-shadow: 0px 0px 0px rgba(255, 255, 255, 0.911);
+    }
+
+    ::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+
+    .page,
+    .header,
+    .layout,
+    .column,
+    .content,
+    .box,
+    .title,
+    .body,
+    .hero,
+    .home-bottom,
+    .note,
+    .shapes,
+    .about,
+    .gallery,
+    .diary,
+    .calendar,
+    .journal,
+    .browser,
+    .footer,
+    .page-title,
+    .menu,
+    .links,
+    .stamps,
+    .stamp,
+    .update,
+    .page-content,
+    .img,
+    .button,
+    .a,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6,
+    .p,
+    .span,
+    .strong {
+      background: rgba(255, 240, 248, 0.88);
+      border: 2px solid #ff9ed5;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255, 119, 198, 0.4);
+    }
+
+    h1,h2,h3,h4,h5,h6,p,span,strong {
+      padding: 8px 10px;
+      display: inline-block;
+    }
+
+    img {
+      padding: 8px;
+      object-fit: cover;
+    }
+
+    button {
+      padding: 8px 10px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    button:hover {
+      background: #ffd7ef;
+    }
+
+    a {
+      display: inline-block;
+      padding: 8px 12px;
+      color: #ffcdf1;
+      text-decoration: none;
+    }
+
+    .box {
+      padding: 10px;
+    }
+
+    header {
+      padding: 10px;
+    }
+
+    footer {
+      padding: 10px;
+    }
+  </style>
+
+  <script>
+      if (document.readyState === 'carregando') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      } ;
+  </script>
 </head>
 <body>
-    <center>
-    <h1> — bem vindo a minha página (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ !! </h1> 
-        <h2>segundo titulo.</h2>
-    <p>esse é nosso 1º parágrafo</p>
-    <br>
-        <p>esse é o nosso 2º parágrafo</p>
-        <label for="">rotulo</label>
-    <img src="my.gif" alt="deve ter uma imagem aqui.">
+  <div class="browser">♡ minha página!</div>
 
-    
+  <main class="page">
+    <header>
+      <img src="mym.gif" alt="imagem do cabeçalho">
+      <h1>página da Mel ヾ(≧▽≦*) </h1>
+      <p>um pouco sobre mim:</p>
+    </header>
 
+    <div class="layout">
+      <aside class="column left">
+        <section class="box">
+          <div class="title">♡ navegue</div>
+          <nav class="menu">
+            <div class="section-name">pessoal</div>
+            <button class="active" data-page="home">página inicial</button>
+            <button data-page="about">me conheça!</button>
+            <button data-page="gallery">kinnies</button>
+          </nav>
+        </section>
+
+        <section class="box">
+          <div class="title">☆☆</div>
+          <div class="body stamps">
+          <img src="mel.gif" alt="cat" width="100%">
+          </div>
+        </section>
+
+        <section class="box">
+          <div class="title">♡ bem vindo</div>
+          <div class="body">
+            <img src="my.gif" alt="imagem decorativa" width="100%">
+          </div>
+        </section>
+      </aside>
+
+      <section class="content">
+        <div class="page-content active" data-content="home">
+          <section class="box">
+            <div class="title">♡ bem vindo ao meu site</div>
+            <div class="hero">
+              <div>
+                <div class="placeholder"></div>
+                <div class="placeholder short"></div>
+                <div class="placeholder"></div>
+                <div class="placeholder tiny"></div>
+              </div>
+
+              <img src="wel.gif" alt="imagem principal">
+            </div>
+          </section>
+
+          <div class="home-bottom">
+            <div class="note">
+              <strong>...</strong>
+              <div class="placeholder"></div>
+              <div class="placeholder short"></div>
+            </div>
+            <div class="shapes">
+              <span class="shape"></span>
+              <span class="shape"></span>
+              <span class="shape"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-content" data-content="about">
+          <section class="box">
+            <div class="title">♡ sobre mim.</div>
+            <div class="page-title">
+              <p></p>
+            </div>
+            <div class="about">
+              <img src="kitty.jpg" alt="Avatar">
+              <div>
+                <div class="placeholder"></div>
+                <div class="placeholder"></div>
+                <div class="placeholder short"></div>
+                <div class="placeholder tiny"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="page-content" data-content="gallery">
+          <section class="box">
+            <div class="title">♡ imagens </div>
+            <div class="page-title">
+              <h2>texto</h2>
+              <p></p>
+            </div>
+            <div class="gallery">
+              <img src="cupcake.jpg" alt="img1">
+              <img src="triad.jpg" alt="img2">
+              <img src="pixel.gif" alt="img3">
+              <img src="bf.jpg" alt="img4">
+              <img src="bfg.jpg" alt="img5">
+              <img src="mp.jpg" alt="img6">
+            </div>
+          </section>
+        </div>
+
+        <div class="page-content" data-content="diary">
+          <section class="box">
+            <div class="title">♡ meltexto</div>
+            <div class="page-title">
+              <h2>mel texto</h2>
+              <p></p>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <aside class="column right" width="1%">
+        <section class="box updates-box">
+          <div class="title">♡ atualizações</div>
+        </section>
+
+        <section class="box">
+          <div class="title">♡ </div>
+          <div class="body">
+            <img src="mel.gif" alt="Botões" width="100%">
+          </div>
+        </section>
+
+        <section class="box" width="100%">
+          <div class="title">♡ links</div>
+          <div class="body links">
+            <a href="#">Link 01</a>
+            <a href="#">Link 02</a>
+            <a href="#">Link 03</a>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <footer>
+      <span>✦ feito por: ✦</span>
+      <span>© Mell</span>
+    </footer>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll("[data-page]");
+    const pages = document.querySelectorAll("[data-content]");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const name = button.dataset.page;
+
+        buttons.forEach((item) => {
+          item.classList.toggle("active", item === button);
+        });
+
+        pages.forEach((page) => {
+          page.classList.toggle("active", page.dataset.content === name);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
